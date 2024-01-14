@@ -1,4 +1,3 @@
-// Make sure to replace 'YOUR_SERVER_URL' with the correct URL
 const serverURL = 'http://0.0.0.0:5001';
 
 $(document).ready(function () {
@@ -13,13 +12,11 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('button').click(function () {
-        // Collect the list of checked amenities
         const checkedAmenities = [];
         $('input[type="checkbox"]:checked').each(function () {
             checkedAmenities.push($(this).data('id'));
         });
 
-        // Make a POST request to places_search with the list of checked amenities
         $.ajax({
             type: 'POST',
             url: `${serverURL}/api/v1/places_search/`,
@@ -30,7 +27,6 @@ $(document).ready(function () {
             success: function (data) {
                 $('.places').empty();
 
-                // Loop through the result and create article tags for each place
                 data.forEach(function (place) {
                     const article = '<article>' +
                         '<div class="title_box">' +
